@@ -1,0 +1,29 @@
+<table class="table table-striped table-bordered">
+   <thead>
+      <tr>
+         <th>Task</th>
+         <th>
+            <button class="btn btn-default" (click)="addNewTaskDialog()">Add New</button>
+         </th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let task of list">
+         <td>
+            {{ task.task }}
+         </td>
+         <td>
+            <button (click)="editTask(task)" class="btn btn-default">Edit</button> &nbsp;
+            <button (click)="deleteTask(task)" class="btn btn-danger">Delete</button>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+<div *ngIf="taskDialog" style="height: 100px; width: 400px; position: absolute; left: 50%; top: 50%; background: white; margin-left: -200px; margin-top: -50px; border: 1px solid; padding-top: 20px;">
+   <button (click)="saveTask()" [disabled]="!taskData" class="btn btn-success" style="position: absolute; right: 75px; top: 0;">Save</button>
+   <button (click)="cancelTask()" class="btn btn-success" style="position: absolute; right: 0; top: 0;">Cancel</button>
+
+   Task:
+   <input class="form-control" type="text" [(ngModel)]="taskData">
+</div>
